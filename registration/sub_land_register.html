@@ -1,0 +1,274 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="../css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/registration.css">
+    <link rel="stylesheet" href="../css/sub_regi.css">
+    <title>Field Registration</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-dark bg-dark">
+                <div class="navbar header">
+                    <a class="navbar-brand" href="#">জমি রেজিস্ট্রেশন </a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="main">
+        <div class="container content">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Old Plot</h5>
+                            <div class="form">
+                                <form id="contact" action="javascript:void(0);" method="post">
+                                    <h3>Registration Form</h3>
+                                    <h4>Subregister Office</h4>
+                                    <fieldset>
+                                        <input id="new_plot_no" placeholder="Plot Number" type="text" tabindex="1" required autofocus>
+                                    </fieldset>
+                                    <fieldset>
+                                        <input id="new_own_name" placeholder="New Owner's Name" type="text" tabindex="1" required autofocus>
+                                    </fieldset>
+                                    <fieldset>
+                                        <input id="new_own_nid" placeholder="New Owner's NID" type="text" tabindex="1" required autofocus>
+                                    </fieldset>
+                                    <fieldset>
+                                        <input id="new_email" placeholder="New Owner's Email" type="email" tabindex="1" required autofocus>
+                                    </fieldset>
+                                    <fieldset>
+                                        <input id="new_reg_date" placeholder="Registration Date" type="date" tabindex="1" required autofocus>
+                                    </fieldset>
+                                    <button id="next" name="submit" type="submit" data-submit="...Sending" onclick="_old()">Register</button>
+                                    </fieldset>
+                                    <h4 id="notification2"></h4>
+                                </form>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">New Plot</h5>
+                            <div class="form">
+                                <form id="contact" action="javascript:void(0);" method="post">
+                                    <h3>Registration Form</h3>
+                                    <h4>Subregister Office</h4>
+                                    <fieldset>
+                                        <input id="plot_no" placeholder="Plot Number" type="text" tabindex="1" required autofocus>
+                                    </fieldset>
+                                    <fieldset>
+                                        <input id="own_name" placeholder="Owner's Name" type="text" tabindex="1" required autofocus>
+                                    </fieldset>
+                                    <fieldset>
+                                        <input id="own_nid" placeholder="Owner's NID" type="text" tabindex="1" required autofocus>
+                                    </fieldset>
+                                    <fieldset>
+                                        <input id="own_email" placeholder="Owner's Email" type="email" tabindex="1" required autofocus>
+                                    </fieldset>
+                                    <fieldset>
+                                        <input id="reg_date" placeholder="Registration Date" type="date" tabindex="1" required autofocus>
+                                    </fieldset>
+                                    <fieldset>
+                                        <button id="next" name="submit" type="submit" data-submit="...Sending" onclick="_new()">Register</button>
+                                    </fieldset>
+                                    <h4 id="notification1"></h4>
+                                    <!-- <div class="notification">
+
+                                    </div>                    -->
+                                </form>
+                            </div>
+                            <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer></footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase.js"></script>
+    <script>
+        function main() {
+            var firebaseConfig = {
+                apiKey: "AIzaSyDP-SDIK5ATkkMEEL6_-bJpsXAfqYnm7hU",
+                authDomain: "crud-3c5e1.firebaseapp.com",
+                databaseURL: "https://crud-3c5e1.firebaseio.com",
+                projectId: "crud-3c5e1",
+                storageBucket: "crud-3c5e1.appspot.com",
+                messagingSenderId: "1053589622718",
+                appId: "1:1053589622718:web:e6dd1cf145bb8dd17d33ef",
+                measurementId: "G-E8Z5B8ZQFL"
+            };
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
+        }
+        function getRegDate() {
+            var d = new Date(),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+            return [year, month, day].join('-');
+        }
+        function searchByPlot(Plot, which, Data) {
+            // alert(Data.own_name + " " + which)   ;
+            var array = [];
+            const rootRef = firebase.database().ref("resources/");
+            rootRef.once("value",
+                (snapshot) => {
+                    snapshot.forEach((child) => {
+                        // alert("f");
+                        // ;        
+                        // alert(child.key)             ;
+                        if (child.val().plot_no == Plot) {
+                            if (which == "new") {
+                                // alert(Data.plot_no);
+                                const childRef = firebase.database().ref("resources/" + child.key);
+                                // alert(childRef);
+                                childRef.update({
+                                    "owner_name": Data.own_name,
+                                    "owner_nid": Data.own_nid,
+                                    "email": Data.own_email,
+                                    "reg_date": Data.reg_date,
+                                });
+                                window.location.href = "../index.html";
+                            } else {
+                                array.push({ key: child, date: child.val().reg_date });
+                                // const childRef = firebase.database().ref("resources/" + child.key);
+                                // alert(child.val().reg_date);
+                                // const prev_email = child.val().email;
+                                // const prev_own = child.val().owner_name; 
+                                // const prev_nid = child.val().owner_nid;
+                                // alert(prev_email + "\n" + prev_nid + "\n" + prev_own);
+                                // const childRef = firebase.database().ref("resources/" + child.key);
+                                // alert(childRef);                            
+                                // childRef = firebase.database().ref("resources/" + child.key);
+                                // childRef.update({     
+                                //   "prev_owner_name" : prev_own,
+                                //   "prev_owner_nid" : prev_nid,
+                                //   "prev_owner_email" : prev_email,                         
+                                //   "owner_name" : Data.own_name,
+                                //   "owner_nid" : Data.own_nid,
+                                //   "email" : Data.own_email,
+                                //   // "reg_date": Data.reg_date,                                                            
+                                // });   
+                                // "prev_owner_name" : child.val().owner_name,
+                                //   "prev_owner_nid" : child.val().owner_nid,
+                                //   "prev_owner_email" : child.val().email,  
+                                //   "plot_no": child.val().plot_no,
+                                //   "mouja_no": child.val().mouja_no,    
+                                //   "city_jorip_no": child.val().city_jorip_no,
+                                //   "mutation_no": child.val().mutation_no,
+                                //   "mutation_date": child.val().mutation_date,
+                                //   "reg_dat": child.val().reg_date,                   
+                                //   "owner_name": Data.own_name,
+                                //   "owner_nid": Data.own_nid,
+                                //   "email": Data.own_email, 
+                                // return;                         
+                                // window.location.href = "../index.html";
+                            }
+                        }
+                    });
+                    if (which == "new") {
+                        document.getElementById("notification1").innerHTML = "No matching plot was found!";
+                    } else {
+                        // alert(array.length);
+                        if (array.length > 0) {
+                            const sorted = array.sort(function (a, b) {
+                                // Turn your strings into dates, and then subtract them
+                                // to get a value that is either negative, positive, or zero.
+                                return new Date(b.date) - new Date(a.date);
+                            });
+                            if (sorted[0].key.val().mutation_no != "") {
+                                // alert(sorted[0].date);
+                                // for (var i = 0; i < sorted.length; ++i) {
+                                //   console.log(sorted[i]);
+                                // }
+                                // alert("stop");
+                                // var d = new Date();
+                                // var date = String(d.getFullYear) + "-" + String(d.getMonth) + "-" + String(d.getDay);                      
+                                var date = getRegDate();
+                                // alert(date);
+                                const ref = firebase.database().ref("resources/");
+                                ref.push({
+                                    "prev_owner_name": sorted[0].key.val().owner_name,
+                                    "prev_owner_nid": sorted[0].key.val().owner_nid,
+                                    "prev_owner_email": sorted[0].key.val().email,
+                                    "plot_no": sorted[0].key.val().plot_no,
+                                    "mouja_no": sorted[0].key.val().mouja_no,
+                                    "city_jorip_no": sorted[0].key.val().city_jorip_no,
+                                    mutation_no: "",
+                                    mutation_date: "",
+                                    "reg_date": Data.reg_date,
+                                    "owner_name": Data.own_name,
+                                    "owner_nid": Data.own_nid,
+                                    "email": Data.own_email,
+                                    "plot_no": sorted[0].key.val().plot_no
+                                });
+                            }
+                            else {
+                                document.getElementById("notification2").innerHTML = "Update Your Mutation no";
+                            }
+                        } else {
+                            document.getElementById("notification2").innerHTML = "No matching plot was found!";
+                        }
+                        // alert("foo");
+                    }
+                },
+                (error) => {
+                    console.log("Error: " + error.code);
+                }
+            );
+            // alert("nmm")                  ;
+        }
+        function _old() {
+            main();
+            var Data = {
+                "plot_no": document.getElementById("new_plot_no").value,
+                "own_name": document.getElementById("new_own_name").value,
+                "own_nid": document.getElementById("new_own_nid").value,
+                "own_email": document.getElementById("new_email").value,
+                "reg_date" : document.getElementById("new_reg_date").value
+            };
+            // alert(Data.plot_no);
+            searchByPlot(Data.plot_no, "old", Data);
+        }
+        function _new() {
+            main();
+            var Data = {
+                "plot_no": document.getElementById("plot_no").value,
+                "own_name": document.getElementById("own_name").value,
+                "own_nid": document.getElementById("own_nid").value,
+                "own_email": document.getElementById("own_email").value,
+                "reg_date": document.getElementById("reg_date").value
+            };
+            // alert(Data.plot_no);
+            searchByPlot(Data.plot_no, "new", Data);
+        }
+    </script>
+</body>
+</html>

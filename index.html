@@ -1,0 +1,215 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/registration.css">
+    <title>Field Registration</title> 
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase.js"></script>
+    <script src="js/main.js"></script>       
+  </head>
+  <body>
+    <script>
+      if (localStorage.getItem("registration") != 0) {
+        document.write('<scr' + 'ipt type="text/javascript" src="js/main.js"></scr' + 'ipt>');        
+      } 
+    </script>
+    <header>
+      <div class="container">
+        <nav class="navbar navbar-dark bg-dark">          
+          <div class="navbar header">
+            <a class="navbar-brand" href="#">জমি রেজিস্ট্রেশন </a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>          
+        </nav> 
+      </div>
+    </header>
+    <section id="main">
+      <div class="container content">
+        <div class="row">
+          <div class="col">            
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">AC Land Registration</h5>
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="registration/ac_land_register.html" id="ac_land_btn" class="btn btn-primary">Register</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">            
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Subregister Registration</h5>
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="registration/sub_land_register.html" id="sub_land_btn" class="btn btn-primary">Register</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">            
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Search a Plot</h5>
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-primary" type="button" onclick="searchPlot()">Search</button>
+                  </div>
+                  <input id="search"type="text" class="form-control" placeholder="Enter the plot number" aria-label="" aria-describedby="basic-addon1">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">            
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Mutation Update</h5>
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <a href="mutation/mutation.html" id="mtn_btn" class="btn btn-primary">Mutation</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">            
+            <div class="card result">
+              <table class="table table-stripped table-boarder table-hover"id="tbl">
+                <col width="20%">
+                <col width="20%">
+                <col width="20%">
+                <col width="20%">
+                <col width="20%">
+                <thead id="head">
+                </thead>
+                <tbody id="body">
+                </tbody>
+             </table>
+             <div class="container" id="noti">
+                <p id="x"></p>
+             </div>
+              <!-- <div class="card-body"> -->
+                <!-- <h5 class="card-title">Search a Plot</h5> -->
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                <!-- <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-primary" type="button">Search</button>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Enter the plot number" aria-label="" aria-describedby="basic-addon1">
+                </div> -->
+              <!-- </div> -->
+            </div>
+          </div>      
+        </div>
+      </div>          
+    </section>
+    <!-- <section class="container ">
+      
+    </section> -->
+    <footer>      
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
+    <script>
+      function main() {        
+        var firebaseConfig = {
+            apiKey: "AIzaSyDP-SDIK5ATkkMEEL6_-bJpsXAfqYnm7hU",
+            authDomain: "crud-3c5e1.firebaseapp.com",
+            databaseURL: "https://crud-3c5e1.firebaseio.com",
+            projectId: "crud-3c5e1",
+            storageBucket: "crud-3c5e1.appspot.com",
+            messagingSenderId: "1053589622718",
+            appId: "1:1053589622718:web:e6dd1cf145bb8dd17d33ef",
+            measurementId: "G-E8Z5B8ZQFL"
+        };
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);   
+        }
+      } 
+      
+      function search(Plot) {
+        main();
+        var array = [];
+          const rootRef = firebase.database().ref("resources/");          
+          rootRef.on("value",
+              (snapshot) => {
+                snapshot.forEach((child) => {               
+                  if (child.val().plot_no == Plot) {                        
+                    array.push({key: child, date: child.val().reg_date});                         
+                  }                      
+                });               
+                if (array.length > 0) {
+                  const sorted = array.sort(function(a,b){
+                        // Turn your strings into dates, and then subtract them
+                        // to get a value that is either negative, positive, or zero.
+                    return new Date(a.date) - new Date(b.date);
+                  });
+                // alert(sorted[0].date);
+                // for (var i = 0; i < sorted.length; ++i) {
+                //   console.log(sorted[i]);
+                // }                                                        
+                    // alert("foo");
+                  return sorted;
+                }
+              },
+              (error) => {
+                  console.log("Error: " + error.code);
+              }
+          ); 
+          return array;             
+      }
+      function searchPlot() {
+        var plot_no = document.getElementById("search").value;
+        var sorted = search(plot_no);
+        listTableHead = document.getElementById("head");
+        listTableBody = document.getElementById("body");
+        listTableBody.textContent = "";
+        if (sorted.length > 0) {
+          notify = document.getElementById("x");
+          notify.textContent = ""
+          listTableHead.textContent = "";
+          var row = document.createElement("tr");
+          row.innerHTML =
+                "<th>" + "Previous Owner's Name" + "</th>" +
+                "<th>" + "Previous Owner's NID" + "</th>" +
+                "<th>" + "New Owner's Name" + "</th>" +
+                "<th>" + "New Owner's NID" + "</th>" +
+                "<th>" + "Registration Date" + "</th>";
+          listTableHead.append(row);        
+          for (var i = 0; i < sorted.length; ++i) {
+            var row = document.createElement("tr");
+            row.innerHTML = 
+              "<td>" + sorted[i].key.val().prev_owner_name + "</td>" +
+              "<td>" + sorted[i].key.val().prev_owner_nid + "</td>" +
+              "<td>" + sorted[i].key.val().owner_name + "</td>" +
+              "<td>" + sorted[i].key.val().owner_nid + "</td>" +
+              "<td>" + sorted[i].key.val().reg_date + "</td>";
+              listTableBody.append(row);
+          }          
+        } else {
+          listTableHead = document.getElementById("head");
+          listTableHead.textContent = "";
+          listTableBody = document.getElementById("body");
+          listTableBody.textContent = "";
+          // document.getElementById("tbl").textContent = "";
+          notify = document.getElementById("x");
+          notify.textContent = "Not Found";
+          // alert("hidden");
+        }
+
+      }
+    </script>    
+  </body>
+</html>
